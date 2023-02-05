@@ -99,5 +99,6 @@ http localhost:8080/api/v1/stress-test-chave-com-ulid/200000
 * [ULID spec](https://github.com/ulid/spec) - [ULID Java](https://github.com/huxi/sulky/tree/master/sulky-ulid) 
 * [CopyOnWriteArrayList](https://www.baeldung.com/java-copy-on-write-arraylist)
 * [Caching a table in Memory](https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:253415112676)
-* []()
+* [Measure Elapsed Time in Java](https://www.baeldung.com/java-measure-elapsed-time)
+* [IDs : Integer Vs UUID Vs ULID](https://www.solwey.com/posts/ids-integer-vs-uuid-vs-ulid)
 
