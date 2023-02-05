@@ -1,0 +1,17 @@
+spring:
+  jpa:
+#    show-sql: true
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+#       ddl-auto: none
+    properties:
+      hibernate:
+        cache:
+          use-query-cache: false
+          use-second-level-cache: false
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: fb
+    password: fb
+    driver-class-name: oracle.jdbc.OracleDriver
