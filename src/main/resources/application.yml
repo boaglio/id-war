@@ -12,6 +12,6 @@ spring:
           use-second-level-cache: false
   datasource:
     url: jdbc:oracle:thin:@localhost:1521/xe
-    username: fb
-    password: fb
+    username: devmultitask
+    password: devmultitask
     driver-class-name: oracle.jdbc.OracleDriver
