@@ -49,13 +49,14 @@ http localhost:8080/api/v1/chave-com-number/122
 
 http localhost:8080/api/v1/stress-test-chave-com-number/200000
 
-http localhost:8080/api/v1/stress-test-chave-uuid/200000
+http localhost:8080/api/v1/stress-test-chave-com-uuid/200000
 
 http localhost:8080/api/v1/stress-test-chave-com-ulid/200000
 ```
 
 ## Testes chamando as APIs
 
+Carga: 100.000 registros/tabela
 
 ### Teste no meu desktop
 
@@ -73,23 +74,69 @@ http localhost:8080/api/v1/stress-test-chave-com-ulid/200000
 
 ### Teste no meu laptop
 
-| tipo | hits | tempo (ms) |
+| tipo | hits | tempo (s) |
 |-|-|-| 
-| Numb | 200.000 | 41059 |
-| Numb | 200.000 | 40061 |
-| Numb | 200.000 | 40382 |
-| Numb | 200.000 | 40329 |
-| Numb | 200.000 | 40154 |
-| UUID | 200.000 | 40520 |
-| UUID | 200.000 | 40218 |
-| UUID | 200.000 | 40118 |
-| UUID | 200.000 | 41409 |
-| UUID | 200.000 | 41946 |
-| ULID | 200.000 | 46306 |
-| ULID | 200.000 | 43182 |
-| ULID | 200.000 | 43897 |
-| ULID | 200.000 | 43533 |
-| ULID | 200.000 | 41007 |
+| Numb | 200.000 | 41,059 |
+| Numb | 200.000 | 40,061 |
+| Numb | 200.000 | 40,382 |
+| Numb | 200.000 | 40,329 |
+| Numb | 200.000 | 40,154 |
+| UUID | 200.000 | 40,520 |
+| UUID | 200.000 | 40,218 |
+| UUID | 200.000 | 40,118 |
+| UUID | 200.000 | 41,409 |
+| UUID | 200.000 | 41,946 |
+| ULID | 200.000 | 46,306 |
+| ULID | 200.000 | 43,182 |
+| ULID | 200.000 | 43,897 |
+| ULID | 200.000 | 43,533 |
+| ULID | 200.000 | 41,007 |
+
+## Segundo teste
+
+Carga: 1.000.000 registros/tabela
+
+### Database 
+
+Rotina melhorada para limpar o cache do Oracle:
+
+```
+SQL> 
+DECLARE
+  n_counter NUMBER := 10000;
+begin
+  WHILE n_counter > 1
+  LOOP
+   APEX_UTIL.PAUSE(1);
+   execute immediate 'ALTER SYSTEM FLUSH SHARED_POOL';
+   n_counter := n_counter - 1;
+  END LOOP;
+END;
+/
+```
+
+### Database 1.000.000 linhas/tabela
+
+| tipo | hits | tempo (s) |
+|-|-|-| 
+| Numb |   500.000 |  91,608 |
+| Numb |   500.000 |  98,500 |
+| Numb |   500.000 |  74,366 |
+| Numb | 2.000.000 | 485,504 |
+| Numb | 2.000.000 | 494,008 |
+| Numb | 2.000.000 | 467,540 |
+| UUID |   500.000 | 116,248 |
+| UUID |   500.000 |  88,803 |
+| UUID |   500.000 |  88,557 |
+| UUID | 2.000.000 | 441,392 |
+| UUID | 2.000.000 | 440,073 |
+| UUID | 2.000.000 | 405,196 |
+| ULID |   500.000 |  98,633 |
+| ULID |   500.000 |  78,329 |
+| ULID |   500.000 |  84,237 |
+| ULID | 2.000.000 | 423,239 |
+| ULID | 2.000.000 | 423,199 |
+| ULID | 2.000.000 | 480,033 |
 
 
 ## Referências
